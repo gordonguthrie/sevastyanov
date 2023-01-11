@@ -1,0 +1,14 @@
+{application, sevastyanov,
+ [{description, "An OTP Chess Server over Gemini"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {licenses, ["GNU GPL V3"]},
+  {links, []}
+ ]}.

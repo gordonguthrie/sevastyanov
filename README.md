@@ -1,2 +1,3 @@
-# sevastyanov
-a chess server for the Gemini protocol
+# Sevastyanov
+
+A chess server for the Gemini protocol
