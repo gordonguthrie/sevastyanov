@@ -11,9 +11,17 @@
 
 -behaviour(supervisor).
 
+% ## OTP Exports
+
 -export([start_link/0]).
 
 -export([init/1]).
+
+% ## API Exports
+
+-export([
+            get_games/0
+        ]).
 
 -define(SERVER, ?MODULE).
 
@@ -34,5 +42,10 @@ init([]) ->
                  period => 1},
     ChildSpecs = [],
     {ok, {SupFlags, ChildSpecs}}.
+
+% # API
+
+get_games() ->
+    [[{game, "ribble"}], [{game, "robble"}]].
 
 % # There are no internal functions.

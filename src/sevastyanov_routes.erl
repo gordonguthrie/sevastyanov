@@ -37,5 +37,11 @@ get_routes() ->
     % with a prefix of a `:`
     % so "/home/:user" will match "/home/gordon" and return a KV of `{"user", "gordon"}`
     [
-        {"/",                 ?PUBLIC,      {sevastyanov_tournament, root}}
+        {"/",                     ?PUBLIC,      {sevastyanov_handlers, home}},
+        {"/game/:gameid",         ?PUBLIC,      {sevastyanov_handlers, view_game}},
+        {"/joingame/:gameid",     ?USERNONCED,  {sevastyanov_handlers, join_game}},
+        {"/game/:gameid/move",    ?USERNONCED,  {sevastyanov_handlers, move}},
+        {"/game/:gameid/chat",    ?USERNONCED,  {sevastyanov_handlers, chat}},
+        {"/game/:gameid/history", ?USERNONCED,  {sevastyanov_handlers, history}},
+        {"/requestgame",          ?USERNONCED,  {sevastyanov_handlers, request_game}}
     ].
