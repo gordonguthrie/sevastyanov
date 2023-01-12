@@ -45,7 +45,6 @@ init([]) ->
 
 % # API
 
-get_games() ->
-    [[{game, "ribble"}], [{game, "robble"}]].
+get_games() -> [{"bongo", "ribble"}, {"bangette", "robble"}].
 
 % # There are no internal functions.

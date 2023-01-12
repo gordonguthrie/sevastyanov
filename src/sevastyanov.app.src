@@ -6,6 +6,7 @@
    [kernel,
     stdlib
    ]},
+  {mod, {sevastyanov, []}},
   {env,[]},
   {modules, []},
 

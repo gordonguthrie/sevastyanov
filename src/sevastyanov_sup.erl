@@ -33,7 +33,7 @@ init([]) ->
                  intensity => 0,
                  period => 1},
     Games_sup  = {sevastyanov_games_sup, {sevastyanov_games_sup, start_link, []},
-                  permanent, 5000, server, [sevastyanov_games_sup]},
+                  permanent, 5000, supervisor, [sevastyanov_games_sup]},
     Tournament  = {sevastyanov_tournament, {sevastyanov_tournament, start_link, []},
                   permanent, 5000, worker, [sevastyanov_tournament]},
 

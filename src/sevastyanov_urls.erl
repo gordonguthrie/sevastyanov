@@ -9,8 +9,8 @@
 			make_redirect/1,
 			make_input/1,
 			make_unicode/1,
-			make_accept_challenges/1,
-			make_watch_games/1
+			make_challenges_menu/2,
+			make_games_menu/1
 		]).
 
 make_link(Path, Extension, Text) ->
@@ -36,11 +36,10 @@ make_input(Prompt) ->
 
 make_unicode(Text) -> unicode:characters_to_binary(Text, utf8).
 
-make_accept_challenges(Args) ->
-	io:format("Args is ~p~n", [Args]),
-	Cs = proplists:get_value(challenges, Args),
-	io:format("in make_accept_challenges Cs is ~p~n", [Cs]),
-	[<<"=> challenge ", X, "\r\n">> || X <- Cs].
+make_challenges_menu([], Id) -> "There are no challenges open";
+make_challenges_menu(Challenges, Id) ->
+	[make_action_link(["join", "game"], BinId, Id, "Join: " ++ Name) || {BinId, Name} <- Challenges].
 
-make_watch_games(List) ->
-	[<<"=> game ", X, "\r\n">> || X <- List].
+make_games_menu([]) -> "There are not games being played";
+make_games_menu(Games) ->
+	[make_link(["game"], BinId, "Watch: " ++ Name) || {BinId, Name} <- Games].

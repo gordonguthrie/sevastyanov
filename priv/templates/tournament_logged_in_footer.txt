@@ -1,0 +1,11 @@
+### Join a game
+
+~challenges~;
+
+### Issue a challenge
+
+~starts~;
+
+### Watch a game
+
+~games~;

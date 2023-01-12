@@ -1,6 +1,5 @@
 -module(sevastyanov).
 
-
 % This is a normal Erlang OTP application - it exposes the callbacks
 % which are defined in the `application` behaviour.
 

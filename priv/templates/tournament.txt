@@ -37,10 +37,4 @@ h  ♖ ░♘░ ♗ ░♕░ ♔ ░♗░ ♘ ░♖░
      ░░░   ░░░   ░░░   ░░░
 ```
 
-### Join a game
-
-~challenges~[ ~challenge~;~]
-
-### Watch a game
-
-~games~[ ~game~;~]
+~footer~;
