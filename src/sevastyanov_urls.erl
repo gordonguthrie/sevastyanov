@@ -36,10 +36,10 @@ make_input(Prompt) ->
 
 make_unicode(Text) -> unicode:characters_to_binary(Text, utf8).
 
-make_challenges_menu([], Id) -> "There are no challenges open";
+make_challenges_menu([], _Id) -> "There are no challenges open";
 make_challenges_menu(Challenges, Id) ->
 	[make_action_link(["join", "game"], BinId, Id, "Join: " ++ Name) || {BinId, Name} <- Challenges].
 
-make_games_menu([]) -> "There are not games being played";
+make_games_menu([]) -> "There are no games being played";
 make_games_menu(Games) ->
 	[make_link(["game"], BinId, "Watch: " ++ Name) || {BinId, Name} <- Games].

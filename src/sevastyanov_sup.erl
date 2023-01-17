@@ -32,11 +32,19 @@ init([]) ->
     SupFlags = #{strategy => one_for_all,
                  intensity => 0,
                  period => 1},
-    Games_sup  = {sevastyanov_games_sup, {sevastyanov_games_sup, start_link, []},
-                  permanent, 5000, supervisor, [sevastyanov_games_sup]},
-    Tournament  = {sevastyanov_tournament, {sevastyanov_tournament, start_link, []},
-                  permanent, 5000, worker, [sevastyanov_tournament]},
-
+    Games_sup   = #{id       => sevastyanov_games_sup,
+                    start    => {sevastyanov_games_sup, start_link, []},
+                    restart  => permanent,
+                    shutdown => 5000,
+                    type     => supervisor,
+                    modules  => [sevastyanov_games_sup]},
+    Tournament  = #{id       => sevastyanov_tournament,
+                    start    => {sevastyanov_tournament, start_link, []},
+                    restart  => permanent,
+                    shutdown => 5000,
+                    type     => worker,
+                    modules  => [sevastyanov_tournament]},
+    % need to be started in this order
     ChildSpecs = [
                     Games_sup,
                     Tournament

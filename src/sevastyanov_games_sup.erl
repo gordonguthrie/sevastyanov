@@ -11,6 +11,8 @@
 
 -behaviour(supervisor).
 
+-include("sevastyanov_game.hrl").
+
 % ## OTP Exports
 
 -export([start_link/0]).
@@ -20,7 +22,7 @@
 % ## API Exports
 
 -export([
-            get_games/0
+            start_game/1
         ]).
 
 -define(SERVER, ?MODULE).
@@ -43,8 +45,21 @@ init([]) ->
     ChildSpecs = [],
     {ok, {SupFlags, ChildSpecs}}.
 
-% # API
+% ## API
 
-get_games() -> [{"bongo", "ribble"}, {"bangette", "robble"}].
+start_game(Game) ->
+    ChildSpec = make_child_spec(Game),
+    {ok, Child} = supervisor:start_child(?MODULE, ChildSpec),
+    io:format("in sevastyanov_games_sup start_game Child is ~p~n", [Child]),
+    Child.
 
-% # There are no internal functions.
+% ## Internal Functions
+
+make_child_spec(Game) ->
+    #game{id = Id} = Game,
+    #{id       => Id,
+      start    => {sevastyanov_game, start_link, [Game]},
+      restart  => permanent,
+      shutdown => 5000,
+      type     => worker,
+      modules  => [sevastyanov_game]}.

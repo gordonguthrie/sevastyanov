@@ -1,0 +1,1 @@
+-record(game, {id, name, white, black, type, status = waiting, pid, board = [], history = [], chat = []}).
