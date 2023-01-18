@@ -52,7 +52,7 @@ view_game(GameId, Id) ->
 % Callbacks
 
 init(#game{} = Game) ->
-    Board = sebastyanov_chess:make_starting_board(),
+    Board = 'Elixir.SevastyanovChess.Chess':make_starting_board(),
     {ok, Game#game{board = Board}}.
 
 handle_call({view_game, Id}, _From, #game{white = Id} = State) ->
@@ -78,8 +78,5 @@ code_change(_OldVsn, State, _Extra) ->
     {ok, State}.
 
 %% Internal functions
-
--define(WHITE, #{colour = white, piece = nil}).
--define(BLACK, #{colour = black, piece = nil}).
 
 

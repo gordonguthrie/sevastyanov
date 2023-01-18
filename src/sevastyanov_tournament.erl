@@ -147,6 +147,7 @@ make_id(Key, Salt) ->
 write_tournament(State) ->
     #state{dbroot = DBRoot} = State,
     PurgedState = purge_pids(State),
+    ok = filelib:ensure_path(DBRoot),
     Filename = filename:absname_join(DBRoot, ?TOURNAMENT),
     Format = fun(Term) -> io_lib:format("~tp.~n", [Term]) end,
     Text = unicode:characters_to_binary(lists:map(Format, [PurgedState])),

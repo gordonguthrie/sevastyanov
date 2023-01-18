@@ -32,7 +32,7 @@ view_game(#{host := Host, id := Id} = Route, [{"gameid", GameId}]) ->
 	io:format("W is ~p~nB is ~p~n", [W, B]),
 	WhiteName = get_name(W),
 	BlackName = get_name(B),
-	Board = sebastyanov_chess:draw_board(Bd),
+	Board = 'Elixir.SevastyanovChess.Chess':draw_board(Bd),
 	Args = [
 			{name,      N},
 			{status,    S},
